@@ -10,20 +10,14 @@
         android:name="com.example.moviesample.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
-    </fragment>
-
-    <fragment
-        android:id="@+id/favoritesFragment"
-        android:name="com.example.moviesample.favorites.FavoritesFragment"
-        android:label="fragment_favorites"
-        tools:layout="@layout/fragment_favorites" >
+        <argument
+            android:name="filterFavorites"
+            app:argType="boolean"
+            android:defaultValue="false" />
     </fragment>
 
     <action
         android:id="@+id/action_global_homeFragment"
-        app:destination="@id/homeFragment"/>
+        app:destination="@id/homeFragment" />
 
-    <action
-        android:id="@+id/action_global_favoritesFragment"
-        app:destination="@id/favoritesFragment"/>
 </navigation>

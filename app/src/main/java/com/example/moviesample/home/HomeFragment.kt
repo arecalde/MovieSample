@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.LifecycleOwner
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviesample.R
 import com.example.moviesample.databinding.FragmentHomeBinding
@@ -16,7 +17,7 @@ import com.example.moviesample.model.Movie
 
 class HomeFragment : Fragment() {
     private val viewModel: HomeViewModel by viewModels()
-
+    private val homeFragmentArgs: HomeFragmentArgs by navArgs()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -29,7 +30,21 @@ class HomeFragment : Fragment() {
         val recyclerView = binding.movieRecyclerView
 
         viewModel.movies.observe(viewLifecycleOwner) { map ->
-            recyclerView.adapter = MovieItemAdapter(map.toList().map { it.second }, viewLifecycleOwner)
+            if (!homeFragmentArgs.filterFavorites) {
+                recyclerView.adapter = MovieItemAdapter(
+                    map.toList().map { it.second }, viewLifecycleOwner)
+            } else {
+                recyclerView.adapter = MovieItemAdapter(
+                    map.filter {
+                    val nonNullContext = context
+                    return@filter if (nonNullContext != null) {
+                        it.value.isFavorite(nonNullContext)
+                    } else {
+                        true
+                    }
+                }.toList().map { it.second }, viewLifecycleOwner)
+            }
+
         }
         return binding.root
     }

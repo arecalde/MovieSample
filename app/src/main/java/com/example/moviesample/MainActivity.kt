@@ -17,12 +17,14 @@ class MainActivity : AppCompatActivity() {
             when (it.itemId) {
                 R.id.homeFragment -> {
                     val directions = NavDirections.actionGlobalHomeFragment()
+                    directions.filterFavorites = false
                     findNavController(this, R.id.nav_host_fragment).navigate(directions)
                     true
                 }
 
                 R.id.favoritesFragment -> {
-                    val directions = NavDirections.actionGlobalFavoritesFragment()
+                    val directions = NavDirections.actionGlobalHomeFragment()
+                    directions.filterFavorites = true
                     findNavController(this, R.id.nav_host_fragment).navigate(directions)
                     true
                 }

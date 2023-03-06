@@ -11,8 +11,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class HomeViewModel : ViewModel() {
-    val fragmentName = "Home Fragment"
-
     private val _movies = MutableLiveData(mapOf<Int, Movie>())
     val movies: LiveData<Map<Int, Movie>> = _movies
 

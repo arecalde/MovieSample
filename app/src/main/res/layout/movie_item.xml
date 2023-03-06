@@ -8,11 +8,11 @@
             type="com.example.moviesample.model.Movie" />
 
     </data>
-    <!--        android:onClick="@{() -> movie.favoriteMovie(context) }"-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="@{() -> movie.favoriteMovie(context) }"
         android:padding="10dp">
         <ImageView
             imageUrl="@{ movie.getUrl() }"
@@ -31,11 +31,26 @@
             android:layout_margin="10dp"
             android:text="@{movie.title}"
             tools:text="Title"
+            android:id="@+id/title"
             app:layout_constraintStart_toEndOf="@id/image"
+            app:layout_constraintEnd_toStartOf="@id/favoritesIcon"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+        <ImageView
+            android:id="@+id/favoritesIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+
+            android:src="@{movie.drawable ?? movie.getDrawable(context) }"
+            tools:src="@drawable/baseline_star_24"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
