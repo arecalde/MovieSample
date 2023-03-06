@@ -1,8 +1,13 @@
 package com.example.moviesample.model
 
+import android.view.View
+import android.widget.ImageView
+import androidx.databinding.BindingAdapter
 import com.google.gson.annotations.SerializedName
+import com.squareup.picasso.Picasso
 
-data class Movie (
+
+class Movie (
 
   @SerializedName("adult"             ) var adult            : Boolean?       = null,
   @SerializedName("backdrop_path"     ) var backdropPath     : String?        = null,
@@ -19,4 +24,12 @@ data class Movie (
   @SerializedName("vote_average"      ) var voteAverage      : Double?        = null,
   @SerializedName("vote_count"        ) var voteCount        : Int?           = null
 
-)
+) {
+  fun getUrl(): String = "https://www.themoviedb.org/t/p/w1280/"+posterPath
+}
+
+@BindingAdapter("imageUrl")
+fun loadImage(view : View, url : String?){
+  if (url.isNullOrEmpty()) return
+  Picasso.get().load(url).into((view as ImageView))
+}
