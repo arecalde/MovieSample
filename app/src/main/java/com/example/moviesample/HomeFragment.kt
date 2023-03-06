@@ -1,4 +1,4 @@
-package com.example.moviesample.home
+package com.example.moviesample
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

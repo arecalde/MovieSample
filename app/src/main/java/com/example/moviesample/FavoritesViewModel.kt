@@ -1,4 +1,4 @@
-package com.example.moviesample.favorites
+package com.example.moviesample
 
 import androidx.lifecycle.ViewModel
 

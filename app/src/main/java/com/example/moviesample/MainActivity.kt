@@ -2,6 +2,7 @@ package com.example.moviesample
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.navigation.Navigation.findNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -15,11 +16,17 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView?.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.homeFragment -> {
+                    val directions = NavDirections.actionGlobalHomeFragment()
+                    findNavController(this, R.id.nav_host_fragment).navigate(directions)
                     true
                 }
+
                 R.id.favoritesFragment -> {
+                    val directions = NavDirections.actionGlobalFavoritesFragment()
+                    findNavController(this, R.id.nav_host_fragment).navigate(directions)
                     true
                 }
+
                 else -> true
             }
         }
