@@ -2,12 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".FavoritesFragment">
+    tools:context=".favorites.FavoritesFragment">
 
     <data>
         <variable
             name="viewModel"
-            type="com.example.moviesample.FavoritesViewModel" />
+            type="com.example.moviesample.favorites.FavoritesViewModel" />
         <import type="android.view.View" />
     </data>
 
